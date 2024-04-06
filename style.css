@@ -1,0 +1,74 @@
+html {
+    text-align: center;
+    font-family: monospace;
+}
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.top {
+    display: flex;
+    flex-grow: 1;
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+    height: 300px;
+    flex-shrink: 0;
+    background-color: black;
+    border-radius: 5px;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+}
+
+.number {
+    background-color: #217C7e;
+    font-size: 26px;
+}
+
+.zero {
+    flex-grow: 1;
+}
+
+button {
+    width: 100px;
+    height: 80px;
+    margin: 1px;
+    border-radius: 5px;
+}
+
+#equal {
+    height: 100px;
+    width: 300px;
+}
+
+.output {
+    background-color: rgb(190, 186, 186);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: end;
+    align-items: end;
+    font-size: 36px;
+    height: 84px;
+}
+
+.previousNumber,
+.currentNumber {
+    /* width: 256px;
+    height: 18.5px; */
+    text-align: end;
+    padding-right: 2px;
+}
+
+.operator {
+    background-color: #ff8f1f;
+    font-size: 26px;
+}
