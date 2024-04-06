@@ -54,6 +54,24 @@ const numberButtons = document.querySelectorAll('.number');
 
 const operators = document.querySelectorAll('.operator');
 
+const plusMinus = document.querySelector('.plus-minus');
+plusMinus.addEventListener('click', () => {
+    if (currentNum !== '' || currentNum !== '0') {
+        currentNum = '-' + currentNum;
+        currentDisplayedNumber.textContent = currentNum;
+    }
+})
+
+const percentage = document.querySelector('.percentage');
+percentage.addEventListener('click', () => {
+    if (currentNum !== '' && previousNum === '') {
+        currentNum = (currentNum / 100);
+        currentDisplayedNumber.textContent = currentNum;
+    } else if (currentNum === '' && previousNum !== '') {
+        previousNum = (previousNum / 100)
+        currentDisplayedNumber.textContent = previousNum;
+    }
+})
 const equal = document.querySelector('.equal')
 equal.addEventListener('click', () => {
     if (currentNum !== '' & previousNum !== '') {

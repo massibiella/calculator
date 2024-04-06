@@ -2,73 +2,93 @@ html {
     text-align: center;
     font-family: monospace;
 }
-body {
-    display: flex;
-    justify-content: center;
-}
 
-.top {
+#calc {
     display: flex;
-    flex-grow: 1;
+    min-height: 95vh;
+    height: 100vh;
+    background-color: azure;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    align-content: center;
 }
 
 .main {
-    display: flex;
-    flex-wrap: wrap;
-    width: 400px;
-    height: 300px;
-    flex-shrink: 0;
+    border: 10px solid rgba(47, 47, 47, 1);
+    gap: 2px;
     background-color: black;
-    border-radius: 5px;
+    border-radius: 2px;
 }
 
-.left {
-    display: flex;
-    flex-direction: column;
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(80px, auto) repeat(4, 80px);
+    justify-content: center;
+    padding: 3px;
+    /* margin: 4px 0; */
 }
 
-.number {
+.number,
+.decimal {
     background-color: #217C7e;
     font-size: 26px;
 }
 
-.zero {
-    flex-grow: 1;
+.number:active {
+    background-color: #36babc;
+}
+
+#zero {
+    grid-column: span 2;
 }
 
 button {
-    width: 100px;
-    height: 80px;
+    /* height: 80px; */
     margin: 1px;
     border-radius: 5px;
+    font-size: 26px;
 }
 
-#equal {
-    height: 100px;
-    width: 300px;
+.equal {
+    background-color: #ff8f1f
 }
 
 .output {
     background-color: rgb(190, 186, 186);
-    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-    justify-content: end;
-    align-items: end;
+    justify-content: space-around;
+    align-items: flex-end;
     font-size: 36px;
+    text-shadow: 5.5em;
     height: 84px;
+    margin: 4px;
 }
 
 .previousNumber,
 .currentNumber {
-    /* width: 256px;
-    height: 18.5px; */
     text-align: end;
     padding-right: 2px;
 }
 
 .operator {
     background-color: #ff8f1f;
-    font-size: 26px;
+}
+
+.operator:focus {
+    background-color: #ffc183;
+}
+
+.clear,
+.percentage,
+.plus-minus {
+    background-color: rgb(61, 151, 215);
+}
+
+.clear:active,
+.percentage:active,
+.plus-minus:active {
+    background-color: rgb(96, 182, 244);
 }
