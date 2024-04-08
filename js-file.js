@@ -44,6 +44,8 @@ let currentNum = '';
 let previousNum = '';
 let operator = '';
 
+window.addEventListener('keydown', handleKeyPressed);
+
 const currentDisplayedNumber = document.querySelector(".currentNumber");
 const previouslyDisplayedNumber = document.querySelector(".previousNumber")
 
@@ -54,6 +56,18 @@ const numberButtons = document.querySelectorAll('.number');
 
 const operators = document.querySelectorAll('.operator');
 
+const decimal = document.querySelector('.decimal');
+decimal.addEventListener('click', handleDecimal)
+
+function handleDecimal() {
+    if (currentDisplayedNumber.textContent.includes('.')) {
+        decimal.disabled = true;
+    }
+    else {
+        currentNum += '.';
+        currentDisplayedNumber.textContent = currentNum;
+    }
+}
 const plusMinus = document.querySelector('.plus-minus');
 plusMinus.addEventListener('click', () => {
     if (currentNum !== '' || currentNum !== '0') {
@@ -64,14 +78,12 @@ plusMinus.addEventListener('click', () => {
 
 const percentage = document.querySelector('.percentage');
 percentage.addEventListener('click', () => {
-    if (currentNum !== '' && previousNum === '') {
+    if (currentNum !== '') {
         currentNum = (currentNum / 100);
         currentDisplayedNumber.textContent = currentNum;
-    } else if (currentNum === '' && previousNum !== '') {
-        previousNum = (previousNum / 100)
-        currentDisplayedNumber.textContent = previousNum;
-    }
-})
+    } 
+});
+
 const equal = document.querySelector('.equal')
 equal.addEventListener('click', () => {
     if (currentNum !== '' & previousNum !== '') {
@@ -155,4 +167,26 @@ function clearOutput() {
     operator = '';
     previouslyDisplayedNumber.textContent = '';
     currentDisplayedNumber.textContent = '0';
+}
+
+function handleKeyPressed(e) {
+    e.preventDefault();
+    if (e.key >= 0|| e.key <= 9) {
+        handleNumber(e.key);
+    }
+    if (e.key === '+' || e.key === '-' || e.key === '*'  || e.key === '/' ) {
+        handleOperator(e.key);
+    }
+    if (e.key === '=' || e.key === 'Enter') {
+        if (currentNum !== '' && previousNum !== '') {
+            calculate();
+        }
+    }
+    if (e.key === '.')
+        handleDecimal();
+    if (e.key === 'Backspace') {
+        currentNum = currentNum.slice(0, -1);
+        currentDisplayedNumber.textContent = currentNum;
+
+    }
 }
